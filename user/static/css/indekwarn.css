@@ -1,0 +1,12 @@
+div.warning 
+{position : relative; top:140px; left: 0px; }
+
+@media screen and (max-width:360px){
+    div.warning{
+        position: relative;
+        top:230px;
+        left:0px;
+
+    }
+
+}
