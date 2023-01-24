@@ -1,0 +1,2 @@
+# AIVLE_BIG_PROJECT
+KT AIVLE SCHOOL 2기 빅 프로젝트 결과물
