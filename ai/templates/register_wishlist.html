@@ -1,0 +1,20 @@
+{%load static%}
+{%block contents%}
+<div>언제 방문하고 싶나요? </div>
+<form action="" method = 'POST'>
+    {% csrf_token %}
+    {%for form in forms%}
+    <div>
+        <label for="{{form.id_for_label}}">{{form.label}}</label>
+        {{form}}
+    </div>
+    {%endfor%}
+
+    {%if error%}
+    {{error}}
+    {%endif%}
+    <p><input type="date" value="2022-12-25"></p>
+    <p><input type="submit" value="Submit"></p>
+</form>
+
+{% endblock contents%}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}username
+{% block content %}
+<head>
+<style>
+    *{
+        font-family: 'NanumBarunGothicLight';
+
+    }
+            body {
+                background-image:url('/static/img/main.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: #f2f2f6;
+            }
+
+</style>
+        </head>
+    <div>
+    <body>
+
+    <div style="padding-top: 50px;">
+
+<div class="container my-3" style=" padding:50px;width: 70%;height: 550px;border-radius: 20px; background-color: #ffffff">
+<div style="padding-bottom: 5px;width:500px; border-right:1px solid #d3d3d3; padding-right:20px; text-align:justify;height: 400;float: left;margin:0 20px 0 0px">
+<h4>{{info}}</h4>
+<div style="padding-left:800px;padding-top: 20px">
+</div>
+<div>
+
+<h6 style="font-size: medium; font-weight: bold;">&emsp;위치:{{address}}</h6>
+
+
+
+<div id="map" style="width:300px;height:150px;"></div> <!-- 맵 사이즈 조절 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1b6fddb09ec0484751e39ef2854cf07"></script> <!--여기에 api 키-->
+                        <script>
+                            
+                            let latitude = {{latitude}}
+                            let longitude = {{longitude}}
+                            var placename = "{{info}}"
+                            var container = document.getElementById('map'); // 지도를 넣을 div 지정
+                            var options = {
+                                center: new kakao.maps.LatLng(latitude, longitude), // 여기에 위도, 경도 집어넣으면 지도가 해당 좌표를 중앙으로 나옴(현 좌표는 밀락더마켓)
+                                // center : new kakao.maps.LatLng(db 위도, db 경도)
+                                level: 3 // 레벨을 통해서 지도 크기 지정 가능
+                            };
+
+                            var map = new kakao.maps.Map(container, options); // 지도 생성
+
+                            // 마커로 사용할 이미지 삽입
+                            var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png"; // 이건 카카오맵 공식 마커 이미지
+                            // 마커 이미지 크기
+                            var imageSize = new kakao.maps.Size(24, 35);
+                            // 마커 이미지 생성
+                            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+                            // 마커 생성
+                            var marker = new kakao.maps.Marker({
+                                map : map, // 마커가 들어갈 지도
+                                position : new kakao.maps.LatLng(latitude, longitude), // 맵 중심 좌표와 동일하게 하면 될 듯
+                                title : placename, // 마커 위에 마우스 갖다대면 보일 텍스트
+                                image : markerImage, // 표시할 마커 이미지
+                            })
+
+                        </script>
+
+
+
+                     
+    <div>
+        문의 및 연락처 : {{phone}}
+        <div style="padding-top: 30px">    
+            <ul>
+            <h6 style="float: left;">아직 등록된 리뷰가 없습니다.&emsp;</h6>
+            <h6 style="float: left; padding-left: 5px">익명&emsp;</h6>
+            <h6 style="padding-left: 5px">2022-12-29</h6>
+            </ul>
+            <ul style="padding-top: 10px">
+            <h6 style="float: left;">아직 등록된 리뷰가 없습니다.&emsp;</h6>
+            <h6 style="float: left; padding-left: 5px">익명&emsp;</h6>
+            <h6 style="padding-left: 5px">2022-12-29</h6>
+            </ul>
+            <ul style="padding-top: 10px">
+            <h6 style="float: left;">아직 등록된 리뷰가 없습니다.&emsp;</h6>
+            <h6 style="float: left; padding-left: 5px">익명&emsp;</h6>
+            <h6 style="padding-left: 5px">2022-12-29</h6>
+            </ul>
+            <ul style="padding-top: 10px">
+            <h6 style="float: left;">아직 등록된 리뷰가 없습니다.&emsp;</h6>
+            <h6 style="float: left; padding-left: 5px">익명&emsp;</h6>
+            <h6 style="padding-left: 5px">2022-12-29</h6>
+            </ul>
+            <ul style="padding-top: 10px">
+            <h6 style="float: left;">아직 등록된 리뷰가 없습니다.&emsp;</h6>
+            <h6 style="float: left; padding-left: 5px">익명&emsp;</h6>
+            <h6 style="padding-left: 5px">2022-12-29</h6>
+            </ul>
+    </div>   
+</div>
+</div>
+</div>
+<div >
+    <h6 style="padding-top:30px;padding-left:50px"></h6>
+    <img src="/static/label_img/{{info}}.jpg" alt="" style="line-height: 80%;width:450px;height:300px">
+    </div>
+    <div style="padding-top: 30px; padding-left: 650px;clear:left">
+        
+        
+            <form method="GET" action = "{% url 'review:review_write' %}">{% csrf_token %}
+                <button type = 'submit' name = 'place_info' class="button3" id="review_btn" value = {{info}} style="background-color:#19bec9;width: 150px;border-radius: 15px">리뷰작성</input>
+            </form>
+            <button type = 'button' class="button3" id="detail_btn" onclick=history.back() style="background-color:#19bec9;width: 150px;border-radius: 15px;">닫기</button>
+
+            <style>
+             .button3 {
+             /*세로 가로*/
+            border: none;
+            color:white;
+            background-color: #19bec9;
+            cursor: pointer;
+            width: 50%;
+            height: 35px;
+            font-weight: bold;
+            text-rendering: auto;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            font-size: 17px;
+            border-radius: 15px;
+            float : left;
+
+          }
+            </style>
+        
+    
+    
+</div>
+</div>
+
+    </div>
+    </body>
+    </div>
+{% endblock %}
