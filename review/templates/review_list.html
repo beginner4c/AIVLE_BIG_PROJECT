@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+{% block content %}
+    
+<html lang="ko-KR">
+<head>
+<meta charset="utf-8">
+<title>traivler</title>
+<style>
+    *{
+        font-family: 'NanumBarunGothicLight';
+    }
+    /* modal CSS */
+    .modal_overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    }
+    .modal_window {
+        overflow:auto;
+        background: white;
+        backdrop-filter: blur(13.5px);
+        -webkit-backdrop-filter: blur(5.7px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        width: 750px;
+        height: 580px;
+        position: relative;
+        padding: 10px;
+    }
+    .modal_title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 20px;
+    }
+
+    .modal_title_side{
+    flex: 0 0 40px;
+    text-align: center;
+    }
+    .modal_new_win{
+    /*outline: 2px dashed black ; */
+    outline-offset:-10px;
+    text-align: center;
+    transition: all .15s ease-in-out;
+    width:780px;
+    height: 590px;
+    }
+</style>
+</head>
+
+<div>
+    <body style="background-color:#f2f2f6; margin: 0 ; padding: 0;"> <!--로고 상단-->
+    <style>
+        body {
+        background-color:#f2f2f6;
+        background-image:url('/static/img/main.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+    </style>
+
+
+<hr class="line" style="padding-top: 15px; margin: 0; color: black;
+  height: 10px; border: 0; ">
+
+<div class="td" style="padding-top:100px;">
+    <div class= "review_result"  style="background-color:#ffffff; border-radius: 20px; width: 60%; margin: 0 auto; height: 500px;">
+        <div class="page_tab_area" style="padding: 3rem; font-size: 30px;
+            margin: 0 auto;
+            padding-top: 30px;">
+            <div class = "review_logo">
+                <style>
+                    .review_logo{
+                        font-size: 30px;
+                        margin: 0 auto;
+                        text-align: center;
+                        }
+                </style>
+                Review
+            </div>
+            <hr class = "sn">
+            <div class="page_tab_box on">
+                <form onsubmit="return false" id="bbsAtclForm" name="bbsAtclForm" class="form-inline">
+                <input type="hidden" id="pageIndex" name="pageIndex" value="1">
+                <input type="hidden" id="bbsCd" name="bbsCd" value="BR00000230">
+                <input type="hidden" id="bbsTypeCd" name="bbsTypeCd" value="REVIEW">
+                </form>
+                <div class="board" style="margin: 0; padding: 0;">
+                    {% for re in review %}
+                    <div class="bd_number_simple">
+                        <style>
+                            .bd_number_simple ul li button .td {
+                                min-width: 0;
+                                width: 100%;
+                                max-width: 100%;
+                                padding: 0.4rem 0;
+                                text-align: left;
+                              }
+                        </style>
+                        <!--게시글-->
+                        <ul>
+
+                        <style>
+
+                        ul{
+                        display: block;
+                        list-style: none;
+                        margin-block-start: 1em;
+                        margin-block-end: 1em;
+                        margin-inline-start: 0px;
+                        margin-inline-end: 0px;
+                        padding-inline-start: 40px;
+                        }</style>
+
+
+                        <button id="call_review_modal_{{forloop.counter}}" class="button2" type="button">
+                            <style>
+                                .button2{
+                                    padding: 20px 40px 20px 40px;
+                                    border: none;
+                                    background-color: transparent;
+                                    cursor: pointer;
+                                    width: 100%;
+                                    text-rendering: auto;
+                                    letter-spacing: normal;
+                                    word-spacing: normal;
+                                    line-height: normal;
+                                    text-transform: none;
+                                    text-indent: 0px;
+                                    text-shadow: none;
+                                    font-size: 17px;}
+                            </style>
+
+                                <div class="td number right" style = " font-size: 17px; padding: 0px 10px; float: left; width: 20%; height: 20px; line-height: 20px;
+                                ">{{re.place}}</div>
+                                        <div class="td" style = "padding: 0px 20px; float: left; width: 60%;">
+                                            <style>
+                                            .td {
+                                                height: 20px;
+                                                line-height: 20px;
+                                                min-width: 0;
+                                                width: 100%;
+                                                max-width: 100%;
+                                                padding: 0.4rem 0;
+                                                text-align: left;
+                                              }
+                                            </style>
+
+                                            <div class="tit" style="line-height: 20px; vertical-align: middle;">
+
+                                                <span class= "title">{{re.title}}
+                                                    <style>
+                                                        .title{
+                                                            font-weight:bold;
+                                                            text-rendering: auto;
+                                                            letter-spacing: normal;
+                                                            word-spacing: normal;
+                                                            line-height: normal;
+                                                            text-transform: none;
+                                                            text-indent: 0px;
+                                                            text-shadow: none;
+                                                            font-size: 17px;
+                                                        }
+
+                                                    </style>
+                                                </span></div>
+                                        </div>
+
+
+                                        <div class="td_date" style = "padding: 0px 0 0 250px; text-align: right;">
+                                            <style>
+                                                .td_date{
+                                                    padding: 20px 40px 20px 40px;
+                                                    border: none;
+                                                    background-color: transparent;
+                                                    cursor: pointer;
+                                                    width: 100%;
+                                                    text-rendering: auto;
+                                                    letter-spacing: normal;
+                                                    word-spacing: normal;
+                                                    line-height: normal;
+                                                    text-transform: none;
+                                                    text-indent: 0px;
+                                                    text-shadow: none;
+                                                    font-size: 17px;
+                                                    }
+                                            </style>
+                                            {{re.register_date}}
+                                        </div>
+                                    </button>
+                        </ul>
+                        <hr id="line_{{forloop.counter}}" class ="line2" style="margin: 0; width: 100%; height : 1px; border: 0; background-color: gray;" >
+
+                    </div>
+                    <div id="modal_review_detail_{{forloop.counter}}" class="modal_overlay">
+                        <div class="modal_window">
+                            <div class="modal_title">
+                                <div class=".modal_title_side"> 
+                                </div>
+                                <div> </div>
+                                <div class=".modal_title_side">
+                                    <span id="just_none" class="material-icons-outlined"></span> 
+                                </div>
+                            </div>
+                            <!-- 본문 -->
+                            <div class="container">
+                                <div class="row-mt-5">
+                                    <div class="col-12">
+                                        <!--본문-->
+                                        <div class="card" style="width: 100%;">
+                                            <!--제목,분류,작성일-->
+                                            <div class="card-header">
+                                                <strong style="font-size: 18px;">{{ re.title }}</strong>&nbsp;&nbsp;<span style="font-size: 18px; color: gray;">[공지사항]</span>
+                                                <span style="float:right;">{{ re.register_date|date:'Y.m.d.' }}</span>
+                                            </div>
+                                            <div class="card-body" style="overflow:auto;min-height: 400px; color:black;">
+                                                <!--작성자, 조회수-->
+                                                <div>
+                                                    <span><i class="fas fa-user-edit"></i>&nbsp;작성자 : {{ re.writer }}</span>
+                                                    <span style="float:right;">조회수 : {{ re.hits }}</span>
+                                                </div>
+                                                <hr>
+                                                {% if re.review_image %}
+                            
+                                                    <img class = "image" src = "{{re.review_image.url}}"/>
+                                                {% endif %}
+                                                <!--내용-->
+                                                <div>
+                                                    {{ re.contents | safe }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        
+                                        <div class="modal-footer">
+                                            {% if user.is_authenticated %}
+                                            <button class="btn btn-sm" id="mod_button_{{forloop.counter}}">수정</button>
+                                            <button class="btn btn-sm" id="del_button_{{forloop.counter}}">삭제</button>
+                                            <button id="close_modal_{{forloop.counter}}" type="button" class="btn text-white" style="background-color:#19bec9;width: 150px;border-radius: 15px;"  onclick="location.href='/review/list'">목록으로</button>
+                                        
+                                            {% else %}
+                                            <button id="close_modal_{{forloop.counter}}" type="button" class="btn text-white" style="background-color:#19bec9;width: 150px;border-radius: 15px;" onclick="location.href='/review/list'">목록으로</button>
+                                            {% endif %}
+
+                                           
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                    $('img').css('width', '100%');
+                                });
+                            
+                                function delete_modal() {
+                                    location.replace('/review/{{ re.id }}/delete/');
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+        del_button.addEventListener("click", e => {
+            alert("삭제한다고?")
+        });
+        */
+    </script>
+    <script>
+        var del_button_ = []
+        var mod_button_ = []
+        var line_ = []
+        const review_ = {{length}}
+        let check = 1
+        let modal_ = []
+        let buttonAddFeed_ = []
+        let buttonCloseModal_ = []
+        // posts는 받아온 review 데이터를 JS에서 사용할 수 있게 풀어낸 거
+        let posts = [
+            {% for post in review %} 
+            {
+                id: "{{ post.id }}",
+            },
+            {% endfor %}
+        ]
+        for (var i = 0; i < review_; i++) {
+            line_[i] = document.getElementById("line_" + (check + i));
+            
+        }
+
+        for (var i = 0; i < review_; i++) {
+            let a = i
+            modal_[i] = document.getElementById("modal_review_detail_" + (check + i));
+            buttonAddFeed_[i] = document.getElementById("call_review_modal_" + (check + i));
+            buttonAddFeed_[i].addEventListener("click", e => {
+                modal_[a].style.top = window.pageYOffset + 'px';
+                modal_[a].style.display = "flex";
+                for(var j = 0; j < review_; j++) {
+                    line_[j].style.display = "none";
+                }
+                document.body.style.overflowY = "auto"; // 스크롤 적용 못하게
+            });
+
+            mod_button_[i] = document.getElementById("mod_button_" + (check + i))
+            mod_button_[i].addEventListener("click", e => {
+                if (confirm("정말 수정하시겠습니까??") == true){    //확인
+                    location.href='/review/' + posts[a].id + '/modify';
+                }else{   //취소
+                    return false;
+                }
+            });
+
+            del_button_[i] = document.getElementById("del_button_" + (check + i))
+            del_button_[i].addEventListener("click", e => {
+                if (confirm("정말 삭제하시겠습니까??") == true){
+                    location.href='/review/' + posts[a].id + '/delete';
+                }else{
+                    return false;
+                }
+            });
+        }
+
+        for (var i = 0; i < review_; i++) {
+            buttonCloseModal_[i] = document.getElementById("close_modal_" + (check + i));
+            buttonCloseModal_[i].addEventListener("click", e => {
+                modal_[i].style.display = "none";
+                document.body.style.overflowY = "auto";
+            });
+        }
+      </script>
+    </body>
+</div>
+    {% endblock %}

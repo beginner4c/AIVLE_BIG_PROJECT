@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <head>
+<style>
+    *{
+        font-family: 'NanumBarunGothicLight';
+
+    }
+            body {
+            background-image:url('/static/img/main.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #f2f2f6;
+            }
+
+</style>
+        </head>
+    <div>
+    <body >
+<div style="padding-top: 50px;padding-left: 205px">
+<div class= "container my-3"  style="background-color:#ffffff; border-radius: 20px;
+  width: 1000px;
+  height: 700px;
+  transform: translate(0%, 5%);
+  margin: 5%; /*위 오 아 왼*/
+">
+<h4 style="padding-top: 20px;text-align: center" >{{place}}에 대한 리뷰를 작성해주세요 !</h4>
+<hr>
+
+<div style="padding-top: 25px;padding-left: 140px; clear: left">
+<form action="" method = 'POST' >
+    {% csrf_token %}
+    {%for form in forms%}
+    <div >
+        <label for="{{form.id_for_label}}">{{form.label}}</label>
+        {{form}}
+    </div>
+    {%endfor%}
+
+    {%if error%}
+    {{error}}
+    {%endif%}
+<div style="padding-left: 275px;padding-top: 10px">
+<button type = "submit" class="btn text-white" onclick ="location.href='/review/list'" style="background-color:#19bec9;width: 150px;border-radius: 15px;">작성 완료</button>
+</div>
+</form>
+
+    </div>
+</div>
+</div>
+
+    </body>
+    </div>
+{% endblock %}
