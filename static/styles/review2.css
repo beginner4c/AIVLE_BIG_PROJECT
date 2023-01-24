@@ -1,0 +1,104 @@
+body{
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    height: 40px;
+    padding: 1rem;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow:rgb(0, 0, 0);
+  }
+  .line{
+    margin: 0;
+    color: black;
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #bbb inset;
+  }
+  
+  .logoImg{
+  width: 250px;
+  height: auto;
+  }
+  /* label 스타일 조정 */
+  button {
+    padding: 10px 40px;
+    border: none;
+    color:white;
+    background-color: #19bec9;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    font-size: 17px;
+    border-radius: 15px;
+  
+  }
+
+
+  div.review_result{
+
+    border-radius: 20px;
+    width: 800px auto;
+    height: 500px;
+    transform: translate(0%, 5%);
+    margin: 15px 40px 40px 40px; /*위 오 아 왼*/
+
+
+}
+.review_logo{
+  font-size: 25px;
+  margin: 0 auto;
+  text-align: center;
+  transform: translate(0, 20%)
+
+
+}
+.top{
+  margin:0 auto;
+  width: 300px 80%;
+  height: 50px ;
+  transform: translate(10%, 50%)
+}
+.content{
+  height: 200px ;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  border: 1px solid #bbb;
+  font-family: inherit;
+  border-radius: 10px; 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;    
+  resize: none;
+}
+.comment{
+  transform: translate(0%, 40%);
+
+}
+.content2{
+  height: 50px ;
+  width: 400px auto;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  border: 1px solid #bbb;
+  font-family: inherit;
+  border-radius: 10px; 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;    
+  resize: none;
+
+}

@@ -1,0 +1,111 @@
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+header {
+  height: 40px;
+  padding: 1rem;
+  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow:rgb(0, 0, 0);
+}
+.line{
+  margin: 0;
+  color: black;
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #bbb inset;
+}
+
+.line2{
+  margin: 0;
+  width: 100%;
+  height : 1px;
+  border: 0;
+  background-color :rgb(230, 230, 230);
+}
+
+.logoImg{
+width: 250px;
+height: auto;
+}
+/* label 스타일 조정 */
+.button {
+  display: flex;
+  justify-content: center;
+}
+.board{
+  margin: 0;
+  padding: 0;}
+
+
+div.review_result{
+
+  border-radius: 20px;
+  width: 800px auto;
+  height: 500px;
+  transform: translate(0%, 5%);
+  margin: 15px 40px 40px 40px; /*위 오 아 왼*/
+
+}
+.notice_logo{
+font-size: 30px;
+margin: 0 auto;
+text-align: center;
+}
+
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+
+.bd_number_simple ul li button .td {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.4rem 0;
+  text-align: left;
+}
+
+button {
+  padding: 20px 40px 20px 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  font-size: 17px;
+
+}
+ul{                
+  display: block;
+  list-style: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+.tit {
+  line-height: 20px;
+  vertical-align: middle;
+  }

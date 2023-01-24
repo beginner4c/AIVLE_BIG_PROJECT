@@ -1,0 +1,98 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+header {
+  height: 40px;
+  padding: 1rem;
+  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow:rgb(0, 0, 0);
+}
+hr{
+  margin: 0;
+  color: black;
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #bbb inset;
+}
+
+.logoImg{
+width: 250px;
+height: auto;
+}
+/* label 스타일 조정 */
+.button {
+  display: flex;
+  justify-content: center;
+}
+label {
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* 못생긴 기존 input 숨기기 */
+#chooseFile {
+  visibility: hidden;
+}
+
+
+.fileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fileInput {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 2px black;
+  width: 60%;
+  height: 30px;
+}
+
+#fileName {
+  margin-left: 5px;
+}
+
+.buttonContainer {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.image-show {
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  position: absolute;
+}
+
+
+.content2{
+  width: 80%;
+  height: 20%;
+
+}
+.submit{
+
+}
