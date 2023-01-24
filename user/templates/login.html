@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+    *{
+        font-family: 'NanumBarunGothicLight';
+
+    }
+     /* link - 아직 클릭하지 않은 경우 red 색상 설정 */
+     a:link { color: black; text-decoration: none;}	
+    /* visited - 한번 클릭하거나 전에 클릭한적 있을 경우  */
+    a:visited { color: black; text-decoration: none;}	
+    /* hover - 마우스를 해당 링크에 위치했을 경우 설정 */
+    a:hover { color: #19bec9; text-decoration: underline;}
+
+</style>
+
+    <body>
+        <style>
+            body {
+
+                    background-color:#f2f2f6;
+
+                background-image:url('/static/img/main.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                }
+        </style>
+<div style="padding-top: 100px">
+<div class="container my-3" style="margin: 0 auto; border:none; padding:30px;width: 500px;border-radius: 10px; background-color: #ffffff;">
+<h4 style="padding-left: 175px ; padding-bottom: 20px; font-family: NanumBarunGothicRegular;" >로그인</h4>
+
+    <form method="post" action="{% url 'user:login' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">  <!-- 로그인 성공후 이동되는 URL -->
+        <div style="width: 250px; margin:0 auto;">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" id="username" placeholder="아이디"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호"
+                   value="{{ form.password.value|default_if_none:'' }}">
+             <div style="padding-top: 10px; padding-left: 1px;">
+                    <label style = "float:left;"><input type="checkbox" id="saveBtn"> 아이디 기억하기</label>
+             <div>
+                 <ul>
+                            {% if not user.is_authenticated %}
+                            <a href="{% url 'user:signup' %}"  style="padding-left: 50px;">회원가입
+                            </a>
+                            
+
+                        {% endif %}
+                        </ul>
+             </div>
+
+                </div>
+        </div >
+            <div style="padding-left: 50px;">
+        <button type="submit" class="btn text-white" style="background-color:#19bec9;width: 150px; border-radius:10px; font-family:NanumBarunGothicRegular; font-weight:bold;">로그인</button>
+        </div>
+
+    </form>
+</div>
+</div>
+</div>
+
+    </body>
+{% endblock %}

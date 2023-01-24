@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    *{
+        font-family: 'NanumBarunGothicLight';
+
+    }
+            body {
+            background-color:#f2f2f6;
+
+            background-image:url('/static/img/main.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            }
+</style>
+    <body>
+    <div style="padding-top: 100px">
+
+<div class="container my-3" style="border: none; padding:30px;width: 500px;border-radius: 15px; background-color: #ffffff;">
+<h4 style="padding-left: 170px; padding-bottom: 20px; font-family: NanumBarunGothicRegular;">회원가입</h4>
+    <form method="post" action="{% url 'user:signup' %}">
+        {% csrf_token %}
+
+        <div style="width: 250px; margin:0 auto;">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}" placeholder="아이디">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" id="password"
+                   value="{{ form.password.value|default_if_none:'' }}" placeholder="비밀번호">
+        </div>
+            <div class="mb-3">
+            <input type="password" class="form-control" name="password1" id="password1"
+                   value="{{ form.password1.value|default_if_none:'' }}" placeholder="비밀번호 확인">
+            </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="name" id="name"
+                   value="{{ form.name.value|default_if_none:'' }}" placeholder="이름">
+        </div>
+
+        <div class="mb-3">
+            <input type="phone" class="form-control" name="phone" id="phone"
+                   value="{{ form.phone.value|default_if_none:'' }}" placeholder="전화번호">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="email" id="email"
+                   value="{{ form.email.value|default_if_none:'' }}" placeholder="이메일 (입력한 이메일로 인증)">
+        </div>
+            <div style="padding-left: 50px;padding-top: 10px">
+        <button type="submit" class="btn text-white" style="border-radius: 10px; background-color:#19bec9;width: 150px; font-weight:bold;">회원가입</button>
+        </div>
+    </form>
+    </div>
+</div>
+
+    </div>
+    </div>
+    </div>
+    </body>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Traivler</title>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+
+<style>
+    *{
+        font-family: 'NanumBarunGothicLight';
+
+    }
+</style>
+ <nav class="navbar navbar-light bg-light fixed-top" style="background-color: #ffff; padding:0;">
+  <div class="container-fluid"style="background-color: #ffff; padding: 10px">
+    <a href="http://127.0.0.1:8000" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <img src="https://postfiles.pstatic.net/MjAyMjEyMjJfMzAw/MDAxNjcxNjc0MDg5NDc1.K6IZ-bbwy_YGFP20SiAL-KAu2VVXDZ-FL3k155JHcPcg.zAahbo4yJ8BJGcnizMseYN-9tnwzb_m1grJ8h3Tx_4Qg.PNG.thisjis/1051-removebg-preview.png?type=w966" alt="로고" height="50" width="200">
+      </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <style>
+        .navbar-toggler{
+
+          border:none;
+        }
+        .navbar-toggler:active, .navbar-toggler:focus 
+        { border: none !important; box-shadow: none !important; }
+      </style>
+      
+      <span class="navbar-toggler-icon">
+        <style>
+          .navbar-toggler-icon{
+            color: #b0dee1;
+            width:30px;
+          }
+         
+        </style>
+      </span> <!--메뉴 아이콘-->
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+              {% if user.is_authenticated %}
+                  <a class="nav-link" href="{% url 'user:logout' %}">{{ user.username }} (로그아웃)</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      MyPage
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                      <li><a class="dropdown-item" href="{% url 'user:mypage' %}">마이페이지</a></li>
+                      <li><a class="dropdown-item" href="#">회원정보 설정</a></li>
+        
+                    </ul>
+                  </li>
+              {% else %}
+                  <a class="nav-link active" aria-current="page" href="{% url 'user:login' %}">Login</a>
+                  
+                  <a class="nav-link" href="{% url 'user:signup' %}">Sign up</a>
+                  
+
+            {% endif %}
+        
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'notice:notice_list' %}">공지사항</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'review:review_list' %}">리뷰게시판</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'user:traivler' %}">트레이블러란?</a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+</head>
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+<body class="pt-5" >
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

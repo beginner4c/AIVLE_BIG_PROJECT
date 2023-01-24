@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+    <head>
+<style>
+    *{
+        font-family: 'NanumBarunGothicLight';
+
+    }
+            body {
+            background-image:url('/static/img/main.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #f2f2f6;
+            }
+
+</style>
+        </head>
+    <div>
+    <body >
+<div style="padding-top: 50px;">
+<div class= "container my-3"  style="background-color:#ffffff; border-radius: 20px;
+  width: 800px auto;
+  height: 650px;
+  transform: translate(0%, 5%);
+  margin: 5%; /*위 오 아 왼*/
+">
+
+<h4 style="padding-top: 40px;padding-left: 60px">My Page</h4>
+<content  style="display: flex;
+  justify-content: center;
+  align-items: center;">
+<img src='/static/img/profile-user.png' style="width:150px;float: left">
+    <div style="padding-top: 10px;padding-left: 30px">
+
+        <h6>&emsp;이름 : {{ user.name }} </h6>
+        <h6>&emsp;전화번호 : {{ user.phone }} </h6>
+        <h6>&emsp;이메일 : {{ user.email }} </h6>
+    </div>
+</content>
+<content style="display: flex;
+  justify-content: center;
+  align-items: center;">
+<div style="padding-top: 35px;clear: left">
+    <h4 style="text-align: center">작성한 게시물</h4>
+    <div style="background-color:#f2f2f6; border-radius: 20px;
+  width: 900px;
+  height: 325px;">
+        <div style=" padding-top: 60px;text-align: center">
+        {%for re in reviews %}
+        <h5>
+            {{re.register_date}}&emsp;{{re.title}}&emsp;{{re.writer}}
+        </h5>
+        {% endfor %}
+    </div>
+    </div>
+</div>
+</content>
+
+
+</div>
+</div>
+
+    </body>
+    </div>
+{% endblock %}
